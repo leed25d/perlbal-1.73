@@ -1195,6 +1195,19 @@ sub MANAGE_help {
     $mc->end;
 }
 
+sub MANAGE_help_new {
+    my $mc = shift->no_opts;
+    my @pmanage_pm_commands =  map { m/^MANAGE_(\S+)$/ ? $1 : () } keys %Perlbal::;
+    my @registered_commands= map {m/^manage_command\.(\S+)$/ ? "$1 *" : () } keys(%hooks);
+
+    my @commands= sort (@pmanage_pm_commands, @registered_commands);
+
+    foreach my $command (@commands) {
+        $mc->out("$command");
+    }
+    $mc->end;
+}
+
 sub MANAGE_aio {
     my $mc = shift->no_opts;
     my $stats = Perlbal::AIO::get_aio_stats();
