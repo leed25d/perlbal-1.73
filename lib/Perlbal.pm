@@ -1185,17 +1185,17 @@ sub MANAGE_plugins {
     $mc->end;
 }
 
-sub MANAGE_help {
-    my $mc = shift->no_opts;
-    my @commands = sort map { m/^MANAGE_(\S+)$/ ? $1 : () }
-        keys %Perlbal::;
-    foreach my $command (@commands) {
-        $mc->out("$command");
-    }
-    $mc->end;
-}
+## sub MANAGE_help {
+##     my $mc = shift->no_opts;
+##     my @commands = sort map { m/^MANAGE_(\S+)$/ ? $1 : () }
+##         keys %Perlbal::;
+##     foreach my $command (@commands) {
+##         $mc->out("$command");
+##     }
+##     $mc->end;
+## }
 
-sub MANAGE_help_new {
+sub MANAGE_help {
     my $mc = shift->no_opts;
     my @pmanage_pm_commands =  map { m/^MANAGE_(\S+)$/ ? $1 : () } keys %Perlbal::;
     my @registered_commands= map {m/^manage_command\.(\S+)$/ ? "$1 *" : () } keys(%hooks);
